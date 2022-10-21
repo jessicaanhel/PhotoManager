@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Welcome to basic Photo Manager!</h1>
-    <ul>
-        {% for photo in photos %}
-        <li>
-            {{ photo.title }} (}} photo.albumID }}) - ({{ photo.album.name }}
-        </li>
-        {% endfor %}
-    </ul>
+<h1>Welcome to basic Photo Manager!</h1>
+<ul>
+    {% for photo in photos %}
+    <li>
+        {{ photo.title }} (}} photo.albumID }}) - ({{ photo.album.name }}
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}
