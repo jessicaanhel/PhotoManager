@@ -16,7 +16,6 @@ def photos(request):
         context={'photos': Photo.objects.all()})
 
 
-
 class PhotoListView(ListView):
     template_name = 'photo_list.html'
     model = Photo
@@ -44,6 +43,7 @@ class PhotoDeleteView(DeleteView):
     template_name = 'photo_confirm_delete.html'
     model = Photo
     success_url = reverse_lazy('viewer:photo_list')
+
 
 class IndexView(PhotoListView):
     template_name = 'index.html'
