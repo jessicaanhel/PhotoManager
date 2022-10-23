@@ -33,8 +33,9 @@ class PhotoForm(ModelForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             'title',
-            Row(Column('album'), Column('rating'), Column('released')),
-            'description',
+            Row(Column('album_ID'), Column('width'), Column('height'),
+                Column('URL')),
+            'color',
             Submit('submit', 'Submit')
         )
 
@@ -43,21 +44,13 @@ class PhotoForm(ModelForm):
         fields = '__all__'
 
     title = CharField(validators=[capitalized_validator])
-    rating = IntegerField(min_value=1, max_value=10)
-    released = PastMonthField()
+    width = IntegerField(min_value=1, max_value=4)
+    height = IntegerField(min_value=1, max_value=4)
+    color = CharField(max_length=18)
+    URL = CharField(max_length=128)
 
-    def clean_description(self):
+    def clean_url(self):
         # Force each sentence of the description to be capitalized.
-        initial = self.cleaned_data['description']
+        initial = self.cleaned_data['URL']
         sentences = re.sub(r'\s*\.\s*', '', initial).split('.')
         return '. '.join(sentence.capitalize() for sentence in sentences)
-
-    def clean(self):
-        result = super().clean()
-        if result['album'].name == 'Comedy' and result['rating'] > 5:
-            self.add_error('album', '')
-            self.add_error('rating', '')
-            raise ValidationError(
-                "Commedies aren't so good to be rated over 5."
-            )
-        return result

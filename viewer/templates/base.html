@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HollyMovies</title>
+    <title>Photo Manager</title>
     {% block styles %}{% bootstrap_css %}{% endblock %}
     {% block scripts %}{% bootstrap_javascript jquery='full' %}{% endblock %}
 </head>
@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container fixed">
-        <a class="navbar-brand" href="{% url 'index' %}">Photo manager</a>
+        <a class="navbar-brand" href="{% url 'index' %}">Photo Manager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarNavAltMarkup">
             <span class="navbar-toggler-icon"></span>
@@ -27,8 +27,14 @@
                 <div class="nav-item dropdown">
                     <a class="nav-link active dropdown-toggle" href="#"
                        data-toggle="dropdown">
-                        Photos (28)
+                        Photos
                     </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item"
+                           href="{% url 'viewer:photo_list' %}">List</a>
+                        <a class="dropdown-item"
+                           href="{% url 'viewer:photo_create' %}">Create</a>
+                    </div>
                 </div>
             </div>
             <div class="navbar-nav ml-auto">

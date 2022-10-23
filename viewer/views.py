@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import (
     CreateView, DeleteView, DetailView, ListView, UpdateView
 )
@@ -7,13 +6,6 @@ from django.urls import reverse_lazy
 
 from viewer.models import Photo
 from viewer.forms import PhotoForm
-
-
-def photos(request):
-    s1 = request.GET.get('s1, ''')
-    return render(
-        request, template_name='photos.html',
-        context={'photos': Photo.objects.all()})
 
 
 class PhotoListView(ListView):

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load photo_extras %}
+
+{% block content %}
+  <ul>
+    {% for photo in object_list %}
+      <li>
+        {% photo_format photo short=True %}
+        <a href="{% url 'viewer:photo_detail' photo.pk %}">detail</a> /
+        <a href="{% url 'viewer:photo_update' photo.pk %}">update</a> /
+        <a href="{% url 'viewer:photo_delete' photo.pk %}">delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
