@@ -50,7 +50,6 @@ class PhotoForm(ModelForm):
     URL = CharField(max_length=128)
 
     def clean_url(self):
-        # Force each sentence of the description to be capitalized.
         initial = self.cleaned_data['URL']
         sentences = re.sub(r'\s*\.\s*', '', initial).split('.')
         return '. '.join(sentence.capitalize() for sentence in sentences)
