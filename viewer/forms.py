@@ -31,13 +31,11 @@ class PhotoForm(ModelForm):
         fields = '__all__'
 
     title = CharField(validators=[capitalized_validator])
-    width = IntegerField(min_value=1, max_value=4)
-    height = IntegerField(min_value=1, max_value=4)
-    color = CharField(max_length=18)
+    album_ID = IntegerField(min_value=1, max_value=4)
     url = CharField(max_length=128)
     thumbnailUrl = CharField(max_length=128)
 
     def clean_url(self):
-        initial = self.cleaned_data['URL']
+        initial = self.cleaned_data['url']
         sentences = re.sub(r'\s*\.\s*', '', initial).split('.')
         return '. '.join(sentence.capitalize() for sentence in sentences)
