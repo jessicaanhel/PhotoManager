@@ -1,14 +1,25 @@
 {% extends "base.html" %}
 
+{% load static %}
 {% load photo_extras %}
 
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static 'photo_detail.css' %}" />
+{% endblock %}
+
 {% block content %}
-  {{ photo|attr_as_p:'id' }}
-  {{ photo|attr_as_p:'title' }}
-  {{ photo|attr_as_p:'album_ID' }}
-  {{ photo|attr_as_p:'width' }}
-  {{ photo|attr_as_p:'height' }}
-  {{ photo|attr_as_p:'color' }}
-  {{ photo|attr_as_p:'url' }}
-  {{ photo|attr_as_p:'thumbnailUrl' }}
+<div class="row">
+    {% if photo.url %}
+      <div class="col-4">
+        <img src="{{ photo.url }}" class="max-300x450"/>
+      </div>
+    {% endif %}
+    <div class="col">
+      {{ photo|attr_as_p:'id' }}
+      {{ photo|attr_as_p:'title' }}
+      {{ photo|attr_as_p:'color' }}
+      {{ photo|attr_as_p:'albumId' }}
+    </div>
+  </div>
 {% endblock %}

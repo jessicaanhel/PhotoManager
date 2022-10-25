@@ -8,8 +8,8 @@ register = Library()
 @register.simple_tag
 def photo_format(photo, short=False):
     if short:
-        return f'{photo.title} ({photo.color})'
-    return f'{photo.title} ({photo.color}) - {photo.album_ID}'
+        return f'{photo.title} ({photo.url})'
+    return f'{photo.title} ({photo.color}) - {photo.albumId}'
 
 
 @register.filter

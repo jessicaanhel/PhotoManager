@@ -54,6 +54,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'photomanager.urls'
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = ['static']
+
+MEDIA_ROOT = 'media'
+MEDIA_URL = '/media/'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
