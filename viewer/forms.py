@@ -20,9 +20,8 @@ class PhotoForm(ModelForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             'title',
-            Row(Column('album_ID'), Column('width'), Column('height'),
-                Column('url'), Column('thumbnailUrl')),
-            'color',
+            Row(Column('albumId'),
+                Column('url')),
             Submit('submit', 'Submit')
         )
 
@@ -31,7 +30,7 @@ class PhotoForm(ModelForm):
         fields = '__all__'
 
     title = CharField(validators=[capitalized_validator])
-    album_ID = IntegerField(min_value=1, max_value=4)
+    albumId = IntegerField(min_value=1, max_value=4)
     url = CharField(max_length=128)
     thumbnailUrl = CharField(max_length=128)
 
