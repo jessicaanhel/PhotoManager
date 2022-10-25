@@ -3,6 +3,7 @@
 {% load photo_extras %}
 
 {% block content %}
+  {{ photo|attr_as_p:'id' }}
   {{ photo|attr_as_p:'title' }}
   {{ photo|attr_as_p:'album_ID' }}
   {{ photo|attr_as_p:'width' }}
