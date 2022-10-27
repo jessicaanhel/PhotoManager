@@ -3,7 +3,7 @@ import re
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Column, Layout, Row, Submit
 from django.core.exceptions import ValidationError
-from django.forms import CharField, IntegerField, ModelForm, ImageField
+from django.forms import CharField, IntegerField, ModelForm, ImageField, URLField
 
 from viewer.models import Photo
 
@@ -20,8 +20,8 @@ class PhotoForm(ModelForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             'title',
-            Row(Column('albumId'),
-                Column('color')),
+            Row(Column('title'),
+                Column('albumId')),
             'url',
             Submit('submit', 'Submit')
         )
@@ -32,7 +32,7 @@ class PhotoForm(ModelForm):
 
     title = CharField(validators=[capitalized_validator])
     albumId = IntegerField(min_value=1, max_value=4)
-    url = ImageField()
+    url = URLField()
     thumbnailUrl = ImageField()
 
     def clean_url(self):

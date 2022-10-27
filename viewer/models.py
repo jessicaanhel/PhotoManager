@@ -10,5 +10,5 @@ class Photo(Model):
     width = IntegerField(blank=True, null=True)
     height = IntegerField(blank=True, null=True)
     color = CharField(max_length=18)
-    url = ImageField(max_length=200)
-    thumbnailUrl = ImageField(max_length=200)
+    url = ImageField()
+    thumbnailUrl = ImageField()

@@ -1,16 +1,28 @@
 from django.views.generic import (
     CreateView, DeleteView, DetailView, ListView, UpdateView
 )
+from django_tables2 import SingleTableView
+
+
+
 
 from django.urls import reverse_lazy
 
 from viewer.models import Photo
 from viewer.forms import PhotoForm
+from viewer.tables import PhotoTable
+
+
+class PhotoTableListView(SingleTableView):
+    model = Photo
+    table_class = PhotoTable
+    template_name = 'table_list.html'
 
 
 class PhotoListView(ListView):
-    template_name = 'photo_list.html'
     model = Photo
+    template_name = 'photo_list.html'
+
 
 class PhotoDetailView(DetailView):
     template_name = 'photo_detail.html'
