@@ -13,9 +13,14 @@ from viewer.forms import PhotoForm
 from viewer.tables import PhotoTable
 
 
-class PhotoListView(SingleTableView):
+class PhotoTableListView(SingleTableView):
     model = Photo
     table_class = PhotoTable
+    template_name = 'table_list.html'
+
+
+class PhotoListView(ListView):
+    model = Photo
     template_name = 'photo_list.html'
 
 
