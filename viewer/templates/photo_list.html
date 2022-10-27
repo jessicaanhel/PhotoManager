@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load render_table from django_tables2 %}
 {% load photo_extras %}
 
 {% block scripts %}
@@ -14,6 +15,8 @@
 {% endblock %}
 
 {% block content %}
+
+        {% render_table table %}
   <ul>
     {% for photo in object_list %}
      <li>
